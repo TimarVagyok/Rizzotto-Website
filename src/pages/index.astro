@@ -1,17 +1,499 @@
 ---
 
+import { Image } from 'astro:assets';
+import Rizzotto from '../assets/photos/Rizzotto.png';
+import Sketch from '../assets/photos/sketch.png';
+import Mars from '../assets/photos/Mars.jpeg';
+import RizzottoGraphic from '../assets/photos/RizzotoGraphic.png'
+import Rizzotto1 from '../assets/gallery/Rizzotto1.jpeg';
+import Rizzotto2 from '../assets/gallery/Rizzotto2.png';
+import Rizzotto3 from '../assets/gallery/Rizzotto3.jpeg';
+import MarsSwarm from '../assets/photos/Swarm.jpeg';
+
 ---
 
+
+
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rizzotto</title>
+  </head>
+  <body>
+    <main class="track">
+      <section class="panel hero">
+        <Image class="hero-bg" src={Mars} alt="" loading="eager" />
+      
+        <div class="hero-top">
+          <Image class="logo" src={RizzottoGraphic} alt="Rizzotto logo" height={56} loading="eager" />
+          <p class="tag">Helga lab | ITU</p>
+        </div>
+      
+        <div class="hero-text">
+          <h1>RIZZOTTO<br /><span>ON MARS</span></h1>
+          <p class="lead">Otto: four insect legs, infinite rizz.</p>
+          <p class="hint">Scroll →</p>
+        </div>
+      </section>
+
+      <section class="panel" id="what">
+        <div class="what-top">
+          <div class="what-text">
+            <h2>What it does</h2>
+            <p class="lead">It's a proof of concept that a legged robot can move smoothly across rough terrain, like the surface of Mars.</p>
+          </div>
+      
+          <div class="cluster">
+            <figure class="shot">
+              <Image src={Rizzotto1} alt="Rizzotto detail 1" width={800} loading="lazy" />
+              <figcaption>01</figcaption>
+            </figure>
+      
+            <figure class="shot">
+              <Image src={Rizzotto2} alt="Rizzotto detail 2" width={800} loading="lazy" />
+              <figcaption>02</figcaption>
+            </figure>
+      
+            <figure class="shot">
+              <Image src={Rizzotto3} alt="Rizzotto detail 3" width={800} loading="lazy" />
+              <figcaption>03</figcaption>
+            </figure>
+          </div>
+        </div>
+      
+        <div class="stage">
+          <div class="walker">
+            <Image class="mini" src={Rizzotto} alt="" width={240} loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section class="panel split">
+        <div class="about">
+          <h2 class="label">What is the project about?</h2>
+      
+          <p class="intro">
+            The idea: send a swarm of small, simple robots to explore Mars.
+          </p>
+      
+          <div class="points">
+            <div class="point">
+              <h3>Single-task, gear-light</h3>
+              <p>Simple robots cut equipment costs and stack tightly to maximize rocket launch space.</p>
+            </div>
+            <div class="point">
+              <h3>Sustainable</h3>
+              <p>Solar-powered and resilient. Losing one robot won't stop the mission thanks to swarm redundancy.</p>
+            </div>
+            <div class="point">
+              <h3>Bio-inspired design</h3>
+              <p>An insect-inspired swarm with a replaceable "Queen". If units or the leader are lost, the mission survives.</p>
+            </div>
+            <div class="point">
+              <h3>Agile exploration</h3>
+              <p>Legged robots traverse Mars terrain easily, maximizing exploration distance.</p>
+            </div>
+          </div>
+        </div>
+      
+        <Image class="Sketch-img" src={Sketch} alt="Sketch of Rizzotto" loading="lazy" />
+      </section>
+
+      <section class="panel demo">
+        <h2 class="label">Demo</h2>
+      
+        <div class="demo-body">
+          <div class="video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/7aT79NX8A9k"
+              title="Rizzotto demo video"
+              loading="lazy"
+              allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allowfullscreen
+            ></iframe>
+          </div>
+      
+          <aside class="demo-notes">
+            <p class="intro">Watch Rizzotto walk.</p>
+            <div class="point">
+              <h3>Four insect-style legs</h3>
+              <p>Moving over uneven ground instead of rolling on wheels.</p>
+            </div>
+            <div class="point">
+              <h3>Proof of concept</h3>
+              <p>One robot standing in for a future swarm.</p>
+            </div>
+            <div class="point">
+              <h3>Built at Helga lab | ITU</h3>
+              <p>Add a line here about who built it or how long it took.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel build">
+        <Image class="build-bg" src={MarsSwarm} alt="" loading="eager" />
+      
+        <div class="build-content">
+          <h2>Build it</h2>
+          <a class="btn" href="https://github.com/TimarVagyok/Rizzotto">View Rizzotto on GitHub</a>
+        </div>
+      </section>
+
+    </main>
+
+    <script>
+      // Turn the mouse wheel's up/down movement into left/right scrolling
+      const track = document.querySelector<HTMLElement>('.track')!;
+      track.addEventListener(
+        'wheel',
+        (e) => {
+          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            e.preventDefault();
+            track.scrollBy({ left: e.deltaY });
+          }
+        },
+        { passive: false }
+      );
+    </script>
+  </body>
 </html>
+
+<style>
+  :global(html, body) {
+    margin: 0;
+    height: 100%;
+    background: #0b0b0d;
+    color: #f5f1ec;
+    font-family: system-ui, sans-serif;
+    overflow: hidden; /* the .track does the scrolling, not the page */
+  }
+
+  .track {
+    display: flex;
+    height: 100dvh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none; /* hide scrollbar in Firefox */
+  }
+  .track::-webkit-scrollbar { display: none; } /* hide it in Chrome/Safari */
+
+  .panel {
+    flex: 0 0 100vw; /* each section is exactly one screen wide */
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+    border-right: 1px solid #222;
+  }
+
+  .tag { color: #ff5a1f; letter-spacing: 0.3em; font-size: 0.8rem; }
+
+  h1 {
+    font-size: clamp(3rem, 12vw, 10rem);
+    line-height: 0.9;
+    margin: 0.2em 0;
+    font-weight: 900;
+  }
+  h1 span {
+    color: transparent;
+    -webkit-text-stroke: 2px #ff5a1f; /* outlined orange text */
+  }
+
+  h2 { font-size: clamp(2rem, 6vw, 5rem); margin: 0; color: #ff5a1f; }
+  .lead { font-size: 1.25rem; max-width: 30ch; opacity: 0.8; }
+  .hint { margin-top: 3rem; color: #ff5a1f; animation: nudge 1.5s infinite; }
+
+  .panel.split {
+  flex-direction: row;
+  align-items: center;
+  gap: 4vw;
+}
+.panel.split > div { flex: 1; }
+
+.Sketch-img {
+  flex: 1;
+  min-width: 0;
+  max-width: 45vw;
+  max-height: 80vh;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+  .btn {
+    display: inline-block;
+    width: fit-content;
+    padding: 1rem 2rem;
+    background: #ff5a1f;
+    color: #0b0b0d;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .panel.hero {
+  position: relative;
+  overflow: hidden;
+  justify-content: space-between; /* logo bar on top, text at the bottom */
+  align-items: stretch;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* dark fade so the text stays readable over the photo */
+.panel.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 11, 13, 0.85), rgba(11, 11, 13, 0.15) 60%);
+  z-index: 1;
+}
+
+.hero-top,
+.hero-text {
+  position: relative;
+  z-index: 2; /* above the photo and the fade */
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  height: 56px;
+  width: auto;
+}
+
+.hero-top .tag { margin: 0; }
+
+	.stage {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  margin-top: 3rem;
+  border-bottom: 2px dashed rgba(255, 90, 31, 0.4); /* the "Mars ground" */
+}
+
+.walker {
+  --size: 120px;
+  --run: calc(100vw - 16vw - var(--size) - 4vw); /* panel width minus padding, minus the robot, minus a small margin */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--size);
+  animation: patrol 10s linear infinite;
+}
+
+.mini {
+  width: 100%;
+  height: auto;
+  animation: step 0.35s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.panel.split { align-items: stretch; }   /* so the text column can sit at the top */
+
+.panel.split > .about {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Sketch-img { align-self: center; }
+
+.label {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.intro {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 1.5rem 0 2rem;
+  max-width: 28ch;
+}
+
+.points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.point {
+  padding: 1.1rem 1.3rem;
+  border: 1px solid #2a2a2e;
+  border-left: 3px solid #ff5a1f;
+  background: rgba(255, 255, 255, 0.03);
+}
+.point h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  color: #ff5a1f;
+}
+.point p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* Walk right, turn around, walk back, turn around, repeat */
+@keyframes patrol {
+  0%   { transform: translateX(0) scaleX(1); }
+  46%  { transform: translateX(var(--run)) scaleX(1); }
+  50%  { transform: translateX(var(--run)) scaleX(-1); }
+  96%  { transform: translateX(0) scaleX(-1); }
+  100% { transform: translateX(0) scaleX(1); }
+}
+
+.what-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4vw;
+}
+.what-text { flex: 1; }
+.cluster {
+  --u: min(12vw, 24vh);   /* size of one small square */
+  --g: 1rem;              /* gap between squares */
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: calc(2 * var(--u) + var(--g)) var(--u);
+  grid-template-rows: var(--u) var(--u);
+  gap: var(--g);
+  justify-content: center;
+}
+
+.shot {
+  position: relative;
+  margin: 0;
+  overflow: hidden;       /* keeps the zoom inside the square */
+  border-radius: 6px;
+}
+.shot:first-child { grid-row: 1 / 3; }   /* the big square */
+
+.shot :global(img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) brightness(0.9);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.shot:hover :global(img) {
+  transform: scale(1.07);
+  filter: none;
+}
+
+.shot figcaption {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.8rem;
+  font: 700 0.75rem ui-monospace, monospace;
+  letter-spacing: 0.2em;
+  color: #ff5a1f;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.demo-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  margin-top: 1.5rem;
+}
+
+.panel.demo { align-items: flex-start; }
+
+.demo-body {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  margin-top: 1.5rem;
+}
+
+.video {
+  flex: 2;
+  max-width: calc(68vh * 16 / 9);   /* never taller than the screen */
+  aspect-ratio: 16 / 9;
+  border: 1px solid #2a2a2e;
+  border-left: 3px solid #ff5a1f;
+}
+
+.demo-notes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.demo-notes .intro { margin: 0 0 0.5rem; }
+
+.video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.panel.build {
+  position: relative;
+  overflow: hidden;
+}
+
+.build-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* dark fade on the left so the text stays readable */
+.panel.build::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(11, 11, 13, 0.85), rgba(11, 11, 13, 0.1) 70%);
+  z-index: 1;
+}
+
+.build-content {
+  position: relative;
+  z-index: 2;   /* above the photo and the fade */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+/* Little wobble so it looks like it's stepping */
+@keyframes step {
+  from { transform: translateY(0) rotate(-2deg); }
+  to   { transform: translateY(-5px) rotate(2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walker, .mini { animation: none; }
+}
+
+  @keyframes nudge {
+    50% { transform: translateX(10px); }
+  }
+</style>
